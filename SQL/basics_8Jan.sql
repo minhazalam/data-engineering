@@ -87,3 +87,12 @@ insert into employees(salary) values(26000); -- This will add a new row in tabl 
 update employees set salary = 123456 where id in (1,2,3,4,5);
 
 delete from employees where salary=26000;
+
+create table customers (
+    cust_id INT, name VARCHAR(50), age INT, constraint pk PRIMARY KEY (cust_id)
+);
+
+create table orders(
+    order_id INT,amount FLOAT, customer_id INT,
+    constraint fk FOREIGN KEY (customer_id) REFERENCES customers(cust_id)
+);
