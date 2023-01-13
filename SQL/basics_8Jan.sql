@@ -96,3 +96,10 @@ create table orders(
     order_id INT,amount FLOAT, customer_id INT,
     constraint fk FOREIGN KEY (customer_id) REFERENCES customers(cust_id)
 );
+
+
+select count(DISTINCT(city)) as unique_values from employees;
+
+-- Write a query to display data with old and new salary after 20 % bonus addtion
+-- columns which should be included in the output.
+select id, name, salary as old_salary, (salary*.20+salary) as new_salary from employees;
