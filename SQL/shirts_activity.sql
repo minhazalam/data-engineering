@@ -39,6 +39,9 @@ INSERT INTO shirts(article,color,shirt_size,last_worn) VALUES
 -- Show all the rows in shirts table
 SELECT * FROM shirts;
 
+INSERT INTO shirts (article,color,shirt_size,last_worn)
+VALUES ('polo shirt', 'purple', 'M', 50);
+
 
 -- Select all shirts but only print out article and color
 SELECT article,color FROM shirts;
@@ -50,7 +53,7 @@ WHERE shirt_size='M';
 
 -- Update all polo shirts change their size to L
 UPDATE shirts SET shirt_size='L' WHERE article='polo shirt';
-COMMIT;
+-- COMMIT;
 SELECT * FROM shirts;
 
 -- Update shirts last worn 15 days ago and change last_worn to 0
