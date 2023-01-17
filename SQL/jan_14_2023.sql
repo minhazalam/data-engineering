@@ -78,7 +78,7 @@ Create table persons
     id int,
     name varchar(50),
     age int,
-    --Primary Key (id)
+    -- Primary Key (id)
     constraint pk Primary Key (id)
 );
 
@@ -634,3 +634,4 @@ case when parent is null then 'Root'
     from tree;
 
 
+-- JOINS
