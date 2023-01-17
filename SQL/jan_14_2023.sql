@@ -627,11 +627,21 @@ FROM
 -- END
 
 -- TODO : How to Determine the Type of Tree Nodes using SQL? -> an attempt
-select node,
-case when parent is null then 'Root'
-	when node not in (select parent from tree) then 'Leaf'
-    else 'Internal' end as type
-    from tree;
+SELECT 
+    node,
+    CASE
+        WHEN parent IS NULL THEN 'Root'
+        WHEN
+            node NOT IN (SELECT 
+                    parent
+                FROM
+                    tree)
+        THEN
+            'Leaf'
+        ELSE 'Internal'
+    END AS type
+FROM
+    tree;
 
 
 -- JOINS
