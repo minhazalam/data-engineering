@@ -13,8 +13,8 @@ SELECT DATABASE();
 SHOW TABLES;
 
 -- Create table shirts
-CREATE TABLE shirts(
-	shirt_id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE shirts (
+    shirt_id INT PRIMARY KEY AUTO_INCREMENT,
     article VARCHAR(200) NOT NULL,
     color VARCHAR(50) NOT NULL,
     shirt_size VARCHAR(3) NOT NULL,
@@ -37,33 +37,57 @@ INSERT INTO shirts(article,color,shirt_size,last_worn) VALUES
 ('tank top', 'blue', 'M', 15);
 
 -- Show all the rows in shirts table
-SELECT * FROM shirts;
+SELECT 
+    *
+FROM
+    shirts;
 
 INSERT INTO shirts (article,color,shirt_size,last_worn)
 VALUES ('polo shirt', 'purple', 'M', 50);
 
 
 -- Select all shirts but only print out article and color
-SELECT article,color FROM shirts;
+SELECT 
+    article, color
+FROM
+    shirts;
 
 -- Select all medium shirts print out everything but shirt_id
-SELECT article,color,shirt_size,last_worn
-FROM shirts
-WHERE shirt_size='M';
+SELECT 
+    article, color, shirt_size, last_worn
+FROM
+    shirts
+WHERE
+    shirt_size = 'M';
 
 -- Update all polo shirts change their size to L
-UPDATE shirts SET shirt_size='L' WHERE article='polo shirt';
+UPDATE shirts 
+SET 
+    shirt_size = 'L'
+WHERE
+    article = 'polo shirt';
 -- COMMIT;
-SELECT * FROM shirts;
+SELECT 
+    *
+FROM
+    shirts;
 
 -- Update shirts last worn 15 days ago and change last_worn to 0
-UPDATE shirts SET last_worn=0 WHERE last_worn=15;
+UPDATE shirts 
+SET 
+    last_worn = 0
+WHERE
+    last_worn = 15;
 
 -- Delete all old shirts, last worn 200 days ago
-DELETE FROM shirts WHERE last_worn=200;
+DELETE FROM shirts 
+WHERE
+    last_worn = 200;
 
 -- Delete all ank tops
-DELETE FROM shirts WHERE article='tank top';
+DELETE FROM shirts 
+WHERE
+    article = 'tank top';
 
 -- Delete all shirts
 DELETE FROM shirts;
