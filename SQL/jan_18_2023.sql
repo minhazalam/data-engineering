@@ -62,6 +62,34 @@ FROM
     books;
 
 
+-- ALTER AND CONTRAINTS
+create table contacts(name varchar(100) not null, phone varchar(15) not null unique);
+desc contacts;
+
+insert into contacts(name, phone) values('billybo','8736257382');
+select * from contacts;
+
+
+create table partiers(name varchar(50),age int check(age>18));
+desc partiers;
+
+insert into partiers(name,age) values ('Juhn',32);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
