@@ -39,10 +39,15 @@ FROM
     employees
 GROUP BY department;
 
-select department,salary,
+select emp_no,department,salary,
 avg(salary) over(partition by department) as avg_salary,
-max(salary) over() as max_salary,
-min(salary) over() as min_salary
+max(salary) over(partition by department) as max_salary,
+min(salary) over(partition by department) as min_salary
+from employees
+order by 1;
+
+select emp_no, department, salary,
+sum(salary) over(partition by department order by salary desc)
 from employees;
 
 
