@@ -34,22 +34,39 @@ SELECT
     MONTHNAME(birth_date),
     DAYNAME(birth_date),
     WEEK(birth_date),
-    date(birth_date)
+    DATE(birth_date)
 FROM
     people;
 
 
 -- COMPARISON AND LOGICAL OPERATORS
-select database();
+SELECT DATABASE();
 show tables;
-select * from books;
+SELECT 
+    *
+FROM
+    books;
 
-select * from books where author_lname!='Gaiman';
-select * from books where title not like '% %';
-select * from books where author_fname not like 'Da%';
-select 99>1; -- 1
+SELECT 
+    *
+FROM
+    books
+WHERE
+    author_lname != 'Gaiman';
+SELECT 
+    *
+FROM
+    books
+WHERE
+    title NOT LIKE '% %';
+SELECT 
+    *
+FROM
+    books
+WHERE
+    author_fname NOT LIKE 'Da%';
+SELECT 99 > 1;-- 1
 
--- case
 SELECT 
     title,
     stock_quantity,
@@ -63,23 +80,37 @@ FROM
 
 
 -- ALTER AND CONTRAINTS
-create table contacts(name varchar(100) not null, phone varchar(15) not null unique);
+CREATE TABLE contacts (
+    name VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) NOT NULL UNIQUE
+);
 desc contacts;
 
 insert into contacts(name, phone) values('billybo','8736257382');
-select * from contacts;
+SELECT 
+    *
+FROM
+    contacts;
 
 
-create table partiers(name varchar(50),age int check(age>18));
+CREATE TABLE partiers (
+    name VARCHAR(50),
+    age INT CHECK (age > 18)
+);
 desc partiers;
 
 insert into partiers(name,age) values ('Juhn',32);
 
 
+CREATE TABLE users (
+    name VARCHAR(50),
+    age INT CHECK (age > 0)
+);
+alter table users rename column name to username;
+desc users;
 
-
-
-
+alter table users drop column age;
+alter table users add constraint age_over_18 check(age>18);
 
 
 
