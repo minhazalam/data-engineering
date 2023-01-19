@@ -76,5 +76,53 @@ ORDER BY total;
 alter table orders
 drop  FOREIGN KEY customer_id;
 
-delete from customers where last_name='George'
+delete from customers where last_name='George';
+
+-- EXERCISE : JOINS
+-- SCHEMAS
+create table students(id int primary key auto_increment,first_name varchar(50));
+create table papers(title varchar(100),grade tinyint,student_id int,
+ foreign key (student_id) references students(id) on delete cascade);
+
+-- insert data
+INSERT INTO students (first_name) VALUES 
+('Caleb'), ('Samantha'), ('Raj'), ('Carlos'), ('Lisa');
+
+INSERT INTO papers (student_id, title, grade ) VALUES
+(1, 'My First Book Report', 60),
+(1, 'My Second Book Report', 75),
+(2, 'Russian Lit Through The Ages', 94),
+(2, 'De Montaigne and The Art of The Essay', 98),
+(4, 'Borges and Magical Realism', 89);
+
+
+select first_name, title, grade from students join papers on papers.student_id=students.id;
+
+select first_name, title, grade from students left join papers on papers.student_id=students.id;
+
+select first_name, ifnull(title,'MISSING'), IFNULL(grade,0) from students left join papers on papers.student_id=students.id;
+-- group by first_name,title,grade;
+
+SELECT 
+    first_name,
+    IFNULL(AVG(grade), 0) AS average,
+    CASE
+        WHEN IFNULL(AVG(grade), 0) >= 75 THEN 'PASSING'
+        ELSE 'FAILING'
+    END AS passing_status
+FROM
+    students
+        LEFT JOIN
+    papers ON papers.student_id = students.id
+GROUP BY first_name
+ORDER BY average DESC;
+
+
+
+
+
+
+
+
+
 
