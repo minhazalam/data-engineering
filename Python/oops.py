@@ -16,7 +16,8 @@ class Employee:
         """A greeting message for the employee."""
         print(f'Good Morning, {self._name} !')
 
-    def number_of_employees(self):
+    @staticmethod
+    def number_of_employees():
         """Prints number of employees by counting the number of instances
         created.
         """
@@ -29,6 +30,21 @@ emp1.greet_employee()
 emp2 = Employee('Manisha Rao', 68000)
 emp2.greet_employee()
 
-emp2.number_of_employees()
+# emp2.number_of_employees()
 
-emp1.number_of_employees()
+# emp1.number_of_employees()
+
+
+# Print instance variables of an object
+print(emp1.emp_count)
+print(emp1.emp_count)
+
+emp3 = Employee('Kishan Dewangan', 70000)
+
+emp1.emp_count = 12
+emp2.emp_count = 15
+
+print(emp1.emp_count)
+print(emp2.emp_count)
+
+Employee.number_of_employees()
