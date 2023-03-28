@@ -9,7 +9,7 @@ CREATE TABLE employees (
     department VARCHAR(20),
     salary INT
 );
- 
+
 INSERT INTO employees (department, salary) VALUES
 ('engineering', 80000),
 ('engineering', 69000),
